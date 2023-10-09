@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/vue-restapi-magic/',
+  base: '/vue-restapi-new/',
   plugins: [vue()],
   resolve: {
     alias: {

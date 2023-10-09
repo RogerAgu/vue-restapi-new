@@ -2,18 +2,18 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-import useCharacters from '@/composables/useCharacters'
+import useLocations from '@/composables/useLocations.vue'
 
 const route = useRoute()
-const { fetchCharacter, currentCharacter } = useCharacters()
+const { fetchPlace, currentPlace } = useLocations()
 
 onMounted(async () => {
-  await fetchCharacter(route.params.id)
+  await fetchPlace(route.params.id)
   console.log(route.params.id)
 })
 
 onUnmounted(() => {
-  currentCharacter.value = null
+  currentPlace.value = null
 })
 </script>
 
@@ -22,17 +22,14 @@ onUnmounted(() => {
     class="min-h-screen bg-gradient-to-r from-green-900 to-blue-700 py-8 text-white"
   >
     <div
-      v-if="currentCharacter"
+      v-if="currentPlace"
       class="flex flex-col items-center justify-center gap-6"
     >
-      <img
-        :src="currentCharacter.card.imageUrl"
-        :alt="currentCharacter.card.name"
-      />
+      <img :src="currentPlace.place.imageUrl" :alt="currentPlace.place.name" />
       <h1 class="text-white-800 text-6xl font-bold">
-        Hi, I'm the {{ currentCharacter.card.name }}
+        Hi, I'm the {{ currentPlace.place.name }}
       </h1>
-      <pre>{{ currentCharacter.card.originalText }}</pre>
+      <pre>{{ currentPlace.place.originalText }}</pre>
     </div>
   </main>
 </template>
