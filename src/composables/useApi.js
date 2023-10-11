@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://mhw-db.com/locations',
+  baseURL: 'https://mhw-db.com',
 })
 
 const useApi = () => {

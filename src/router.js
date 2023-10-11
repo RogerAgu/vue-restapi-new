@@ -6,7 +6,7 @@ import HomePage from '@/views/HomePage.vue'
 const routes = [
   { path: '/vue-restapi-new/', name: 'Home', component: HomePage },
   {
-    path: '/locations',
+    path: '/locations/:id',
     name: 'Place',
     component: () => import('@/views/LocationDetails.vue'),
   },

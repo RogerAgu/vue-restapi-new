@@ -2,14 +2,15 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-import useLocations from '@/composables/useLocations.vue'
+import usePlaces from '@/composables/useLocations'
 
 const route = useRoute()
-const { fetchPlace, currentPlace } = useLocations()
+const { fetchPlace, currentPlace } = usePlaces()
 
 onMounted(async () => {
   await fetchPlace(route.params.id)
   console.log(route.params.id)
+  console.log(currentPlace)
 })
 
 onUnmounted(() => {
@@ -25,11 +26,11 @@ onUnmounted(() => {
       v-if="currentPlace"
       class="flex flex-col items-center justify-center gap-6"
     >
-      <img :src="currentPlace.place.imageUrl" :alt="currentPlace.place.name" />
+      
       <h1 class="text-white-800 text-6xl font-bold">
-        Hi, I'm the {{ currentPlace.place.name }}
+        Hi, I'm the {{ currentPlace.name }}
       </h1>
-      <pre>{{ currentPlace.place.originalText }}</pre>
+      <pre>{{ currentPlace }}</pre>
     </div>
   </main>
 </template>

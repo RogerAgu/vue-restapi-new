@@ -12,14 +12,14 @@ const camp = defineProps({
 </script>
 <template>
   <RouterLink
-    v-if="camp.place.id"
-    :to="`/locations`"
+    v-if="$attrs.character.id"
+    :to="`/locations/${$attrs.character.id}`"
     class="rounded-lg bg-white shadow-lg"
   >
     <img class="w-full rounded-t-lg object-cover" :src="camp.place.imageUrl" />
     <div class="p-4">
       <h2 class="text-1xl font-semibold text-gray-800">
-        {{ camp.place.name }}
+        {{ $attrs.character.name }}
       </h2>
     </div>
   </RouterLink>
